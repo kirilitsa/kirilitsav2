@@ -1,0 +1,210 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    box-sizing: border-box;
+}
+::selection {
+    background: #323d52; /* Replace with your desired color */
+     /* Replace with your desired text color */
+}     
+html {
+    font-size: 16px; /* This is typically the default size */
+}
+body {
+    background: rgb(16, 25, 75);
+    background: linear-gradient(90deg, rgb(14, 16, 44) 23%, rgba(12,18,32,1) 54%, rgba(15,23,42,1) 100%);
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+@font-face {
+    font-family: 'SanFransiscoHEAVY';
+    src: url(fonts/SF-Pro-Display-Heavy.otf);
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'SanFransiscoM';
+    src: url(fonts/SF-Pro-Display-Medium.otf);
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'SanFransisco';
+    src: url(fonts/SF-Pro-Display-Regular.otf);
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'SFMono';
+    src: url(fonts/FiraMono-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'HalifaxBold';
+    src: url(Halifax\ W03\ Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%); /* Start from beyond the right edge */
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0); /* End at its final position */
+      opacity: 1;
+    }
+}
+#main-content {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 62.5rem;
+    padding: 5rem 1.25rem;
+    gap: 2rem; /* 20px if the base font-size is 16px */
+}
+#intro, #about-me {
+    width: 100%; /* Consistent width for alignment */
+    text-align: left; /* Adjust top margin as needed */
+}
+#intro {
+    margin-top: 18rem;
+}
+
+#intro h1 {
+    color:#CCD6F6;
+    font-family: 'SanFransiscoHEAVY';
+    font-size: 3.02rem;
+    margin-bottom: 20px; /* Space between the heading and paragraph */
+    margin-left: 0; /* Align the left edge of h1 with the paragraph */
+}
+
+.greeting {
+    font-family: 'SFMono';
+    font-size: 21px; /* Adjust as needed */
+    color: #55D8BD; /* Light grey text color, adjust as needed */
+    margin-bottom: 10px; /* Small space below the greeting */
+}
+.name {
+    font-weight: bold;
+    color: #575757; /* Adjust to the color you want for the name */
+    margin-bottom: 30px; /* Space below the name */
+}
+.tagline { 
+    font-family:'SanFransiscoHEAVY';
+    color: #8892B0; /* Adjust to the color you want for the tagline */
+    margin-bottom: 20px; /* Space below the tagline */
+}
+.cta-button {
+    display: inline-block; /* Makes the link behave like a button */
+    background: transparent; /* Transparent background */
+    color: #55D8BD; /* Text color - choose a color that makes the text readable on your background */
+    padding: 10px 20px; /* Padding inside the button */
+    border: 1.5px solid #55D8BD; /* Border color - choose a color that stands out on your background */
+    text-decoration: none; /* Removes underline from the link */
+    font-family:'SFMono';
+    font-size: 14px;
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease
+}
+
+.cta-button:hover {
+    background: transparent; /* Background color on hover - choose a subtle color or keep it transparent */
+    color: #55D8BD; /* Text color on hover - choose a color that contrasts the hover background */
+    border-color: #55D8BD; /* Border color on hover - optional if you want to change the border color on hover */
+    transform: scale(1.02) translate(0, -5px);
+    box-shadow: 10px 10px 0px 0px #55D8BD;
+}
+#about-me {
+    font-family:Arial, Helvetica, sans-serif; /* Center the content and add space below the section */ /* Add padding for spacing inside the section */
+    color: #7582a3; /* Text color */
+}
+.section-title {
+    font-family: 'HalifaxBold', Arial, sans-serif;
+    position: relative;
+    display: inline-block; /* To contain the size of the pseudo-element to the content */
+    margin-top: 60%;
+    margin-bottom: 20px; /* Space below the section title */
+    font-size: 36px; /* Size of the section title */
+    color: #CCD6F6; /* Color of the section title, adjust as needed */
+    /* Other styles... <div>Icons made from <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed by CC BY 4.0</div>*/
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Align the line vertically */
+    left: calc(100% + 10px); /* Position the line after the text with some spacing */
+    width: 3.125rem; /* Initial width of the line */
+    height: 0.5px; /* Make the line thinner */
+    background-color: #575757; /* Color of the line */
+    transition: width 0.3s ease-in-out; /* Smooth transition for the line */
+    transform: translateY(-50%); /* Center the line vertically relative to the title */
+}
+
+.section-title:hover::after {
+    width: 62.5rem; /* Optional: Increase the length of the line on hover */
+}
+
+.about-description {
+    font-family: 'SanFransiscoM';
+    font-size: 1.125rem; /* Size of the about description text */
+    line-height: 1.6; /* Line height for better readability */
+    /*text-align: left; /* Align the text to the left */
+    max-width: 40rem;
+    margin-top: 1.25rem; /* Space above the about description */
+}
+
+
+
+
+
+@media (max-width: 600px) {
+    .greeting {
+        font-size: 21px; /* Minimum font size for greeting */
+    }
+
+    .intro h1 {
+        font-size: 56vw; /* Minimum font size for name */
+    }
+
+    .tagline {
+        font-size: 2rem; /* Minimum font size for tagline */
+    }
+
+    .cta-button {
+        font-size: 14px; /* Minimum font size for button text */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}
+
+/* Maximum sizes */
+@media (min-width: 1200px) {
+    .greeting {
+        font-size: 21px; /* Maximum font size for greeting */
+    }
+
+    .name {
+        font-size: 75px; /* Maximum font size for name */
+    }
+
+    .tagline {
+        font-size: 3.02rem; /* Maximum font size for tagline */
+    }
+
+    .cta-button {
+        font-size: 15px; /* Maximum font size for button text */
+        padding: 16px 24px; /* Adjust button padding */
+    }
+}
