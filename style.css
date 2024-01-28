@@ -92,7 +92,7 @@ body {
 
 .greeting {
     font-family: 'SFMono';
-    font-size: 21px; /* Adjust as needed */
+    font-size: 18px; /* Adjust as needed */
     color: #55D8BD; /* Light grey text color, adjust as needed */
     margin-bottom: 10px; /* Small space below the greeting */
 }
@@ -132,12 +132,12 @@ body {
     color: #7582a3; /* Text color */
 }
 .section-title {
-    font-family: 'HalifaxBold', Arial, sans-serif;
+    font-family: 'SanFransiscoM', Arial, sans-serif;
     position: relative;
     display: inline-block; /* To contain the size of the pseudo-element to the content */
     margin-top: 60%;
     margin-bottom: 20px; /* Space below the section title */
-    font-size: 36px; /* Size of the section title */
+    font-size: 32px; /* Size of the section title */
     color: #CCD6F6; /* Color of the section title, adjust as needed */
     /* Other styles... <div>Icons made from <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed by CC BY 4.0</div>*/
 }
@@ -145,7 +145,7 @@ body {
     content: '';
     position: absolute;
     top: 50%; /* Align the line vertically */
-    left: calc(100% + 10px); /* Position the line after the text with some spacing */
+    left: calc(100% + 15px); /* Position the line after the text with some spacing */
     width: 3.125rem; /* Initial width of the line */
     height: 0.5px; /* Make the line thinner */
     background-color: #575757; /* Color of the line */
@@ -154,17 +154,151 @@ body {
 }
 
 .section-title:hover::after {
-    width: 62.5rem; /* Optional: Increase the length of the line on hover */
+    width: 52rem; /* Optional: Increase the length of the line on hover */
 }
 
 .about-description {
     font-family: 'SanFransiscoM';
     font-size: 1.125rem; /* Size of the about description text */
     line-height: 1.6; /* Line height for better readability */
-    /*text-align: left; /* Align the text to the left */
-    max-width: 40rem;
+    max-width: 30rem;
     margin-top: 1.25rem; /* Space above the about description */
+    padding-bottom: 0rem;
 }
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start of the container */
+    gap: 25px; /* Space between the about me text and the image frame */
+
+}
+
+#about-me {
+    padding: 0rem;
+    flex-basis: 100%; /* Adjust the width as needed */
+}
+.highlight {
+    color: #55D8BD; /* Change to your preferred color */
+    cursor: pointer; /* Optional: Changes the cursor to a pointer to indicate interactivity */
+}
+
+.highlight:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+#image-container {
+    width: 700px; /* or whatever width you desire */
+    height: 400px; /* to maintain aspect ratio */
+    padding: 10px; /* Padding around the image for the frame effect */
+    margin-top: 2rem; /* Adjust to position the image container */
+    box-sizing: border-box;
+    perspective: 1000px; /* Depth effect for 3D transformation */
+}
+
+#image-container img {
+    width: 700px; /* or whatever width you desire */
+    height: 400px; /* to maintain aspect ratio */
+    margin-top: 25rem; /* to move it down */
+    display: block; /* to ensure it respects the width and height */
+    /* Remove flex: 1.5 if it's there */
+}
+#profile-image {
+   max-width: 100%; /* Ensures the image is no larger than its container */
+}
+
+
+#profile-image {
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #55D8BD; /* Color of the frame */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+    transform: translateZ(0); /* Initial state for 3D transformation */
+    transition: transform 0.3s ease-in-out;
+}
+#second-image {
+    width: 700px; /* or whatever width you desire */
+    height: 400px; /* to maintain aspect ratio */
+    border: 1px solid #55D8BD; /* Color of the frame */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+    transform: translateZ(0); /* Initial state for 3D transformation */
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%;
+}
+
+#skills {
+    padding: 20px;
+    margin-top: 0rem;
+}
+#skills .section-title {
+    margin-top: 30%; /* Adjust this value as needed */
+}
+
+.skills-logos {
+    display: flex; /* Align logos in a row */
+    flex-wrap: wrap; /* Allow logos to wrap to next line on small screens */
+    justify-content: center; /* Center logos within the container */
+    gap: 2rem; /* Space between logos */
+}
+
+.logo-container {
+    position: relative;
+    width: 70px; /* Adjust size of logos */
+    height: 70px; /* Adjust size to match width for a square */
+    margin: 0.5rem;
+}
+
+.skill-logo {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+.logo-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: linear-gradient(90deg, rgb(14, 16, 44) 23%, rgba(12,18,32,1) 54%, rgba(15,23,42,1) 100%);
+    color: white;
+    font-size: 16px;
+    font-family: 'SFMono';
+    box-sizing: border-box; /* Include padding in width and height */
+    text-align: center; /* Center align multi-line text */
+}
+
+
+.logo-container:hover .skill-logo {
+    opacity: 0.3;
+}
+
+.logo-container:hover .logo-description {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+/* Adjustments for different screen sizes */
+@media (max-width: 600px) {
+    .skills-logos {
+        justify-content: space-around; /* Adjust spacing on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .skill-logo {
+        width: 70px; /* Smaller logos for small screens */
+        height: 70px;
+    }
+}
+
 
 
 
@@ -172,7 +306,7 @@ body {
 
 @media (max-width: 600px) {
     .greeting {
-        font-size: 21px; /* Minimum font size for greeting */
+        font-size: 18px; /* Minimum font size for greeting */
     }
 
     .intro h1 {
@@ -192,7 +326,7 @@ body {
 /* Maximum sizes */
 @media (min-width: 1200px) {
     .greeting {
-        font-size: 21px; /* Maximum font size for greeting */
+        font-size: 18px; /* Maximum font size for greeting */
     }
 
     .name {
@@ -207,4 +341,20 @@ body {
         font-size: 15px; /* Maximum font size for button text */
         padding: 16px 24px; /* Adjust button padding */
     }
+}
+
+
+
+
+/*#main-content, #intro, #about-me, #skills, #image-container, #profile-image, #second-image {
+    border: 2px solid red;
+}
+
+
+#main-content, #intro, #about-me, #skills {
+    outline: 2px solid red;
+    outline-offset: -2px; 
+}
+#image-container {
+    border: 2px solid rgb(55, 116, 185);
 }

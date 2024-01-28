@@ -1,12 +1,13 @@
-function switchImage(imageNumber) {
-    var image1 = document.getElementById('image1');
-    var image2 = document.getElementById('image2');
+function switchImage() {
+    var currentImage = document.getElementById('profile-image');
+    var secondImage = document.getElementById('second-image');
 
-    if (imageNumber === 1) {
-        image1.style.display = 'block';
-        image2.style.display = 'none';
+    // Check if the current image is visible
+    if (currentImage.style.display !== 'none') {
+        currentImage.style.display = 'none';
+        secondImage.style.display = 'block';
     } else {
-        image1.style.display = 'none';
-        image2.style.display = 'block';
+        currentImage.style.display = 'block';
+        secondImage.style.display = 'none';
     }
 }
