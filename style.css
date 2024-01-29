@@ -1,9 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    border: none;
-    box-sizing: border-box;
 }
 ::selection {
     background: #323d52; /* Replace with your desired color */
@@ -54,6 +51,17 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 45%; }
+}
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #55D8BD; }
+} 
+
 @keyframes slideInFromRight {
     0% {
       transform: translateX(100%); /* Start from beyond the right edge */
@@ -95,7 +103,16 @@ body {
     font-size: 18px; /* Adjust as needed */
     color: #55D8BD; /* Light grey text color, adjust as needed */
     margin-bottom: 10px; /* Small space below the greeting */
+    border-right: .15em solid #55D8BD; /* The caret (cursor) */
+    overflow: hidden; /* Ensures the content is clipped */
+    white-space: nowrap; /* Keeps the content on a single line */
+    width: 0; /* Start with width 0 and let the animation expand it */
+    /* Increase the duration for smoother and slower typing */
+    animation: typing 5s steps(30, end) forwards, blink-caret 0s step-end 5s forwards;
+    /* Set the delay of the blink-caret to match the typing duration so it blinks at the end of the phrase */
+    animation-delay: 0s, 1.7s; /* No delay for typing, 5s delay for blink-caret */
 }
+
 .name {
     font-weight: bold;
     color: #575757; /* Adjust to the color you want for the name */
@@ -141,21 +158,20 @@ body {
     color: #CCD6F6; /* Color of the section title, adjust as needed */
     /* Other styles... <div>Icons made from <a href="https://www.onlinewebfonts.com/icon">svg icons</a>is licensed by CC BY 4.0</div>*/
 }
-.section-title::after {
+/*.section-title::after {
     content: '';
     position: absolute;
     top: 50%; /* Align the line vertically */
-    left: calc(100% + 15px); /* Position the line after the text with some spacing */
-    width: 3.125rem; /* Initial width of the line */
-    height: 0.5px; /* Make the line thinner */
-    background-color: #575757; /* Color of the line */
-    transition: width 0.3s ease-in-out; /* Smooth transition for the line */
-    transform: translateY(-50%); /* Center the line vertically relative to the title */
-}
+    /*left: calc(100% + 15px); /* Position the line after the text with some spacing */
+    /*width: 3.125rem; /* Initial width of the line */
+    /*height: 0.5px; /* Make the line thinner */
+    /*background-color: #575757; /* Color of the line */
+    /*transition: width 0.3s ease-in-out; /* Smooth transition for the line */
+    /*transform: translateY(-50%); /* Center the line vertically relative to the title */
 
-.section-title:hover::after {
+
+/*.section-title:hover::after {
     width: 52rem; /* Optional: Increase the length of the line on hover */
-}
 
 .about-description {
     font-family: 'SanFransiscoM';
@@ -180,10 +196,24 @@ body {
 .highlight {
     color: #55D8BD; /* Change to your preferred color */
     cursor: pointer; /* Optional: Changes the cursor to a pointer to indicate interactivity */
+    position: relative; /* Required for absolute positioning of the pseudo-element */
+    display: inline-block; /* Ensures the pseudo-element aligns correctly */
 }
 
-.highlight:hover {
-    text-decoration: underline; /* Adds underline on hover */
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.1px; /* Thickness of the underline */
+    bottom: 0;
+    left: 0;
+    background-color: #55D8BD; /* Color of the underline */
+    transition: width 0.3s ease-in-out; /* Smooth transition for the underline effect */
+    transform: translateY(-6px); /* Position the underline below the text */
+}
+
+.highlight:hover::after {
+    width: 100%; /* Full width on hover */
 }
 #image-container {
     width: 700px; /* or whatever width you desire */
@@ -224,11 +254,13 @@ body {
 }
 
 #skills {
-    padding: 20px;
+    padding: 0px;
     margin-top: 0rem;
 }
 #skills .section-title {
     margin-top: 30%; /* Adjust this value as needed */
+    text-align: left;
+    margin-bottom: 60px;
 }
 
 .skills-logos {
@@ -278,6 +310,106 @@ body {
 .logo-container:hover .logo-description {
     opacity: 1;
 }
+
+#work-experience {
+    padding: 0px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experience-entry {
+    display: flex;
+    align-items: flex-start; /* Align the items to the top */
+    gap: 5px; /* Reduced space between date and job details */
+    transition: background-color 0.15s ease;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.experience-entry:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Add background-color on hover */
+}
+
+.experience-entry:hover .job-title {
+    color: #55D8BD; /* Change color on hover */
+}
+.arrow {
+    display: inline-block; /* Allows for transformation */
+    transition: transform 0.2s ease; /* Smooth animation for the arrow */
+    font-size: 14px;
+}
+
+.experience-entry:hover .arrow {
+    transform: translateY(-5px) translateX(5px); /* Arrow animation on hover */
+}
+.date {
+    flex-basis: 100%; /* Adjust the width of the date column for closer proximity */
+    text-align: right; /* Align the text to the right */
+    margin-right: 2px; /* Reduced for closer spacing */
+    font-family: 'SanFransisco';
+    color: #7582a3;
+    font-size: 1rem;
+    margin-top: 2.65px;
+}
+
+.job-details {
+    flex-grow: 1; /* Allow job details to take up remaining space */
+    padding-left: 20px; /* Reduced padding for closer alignment */
+    color: #7582a3;
+    margin-top: 0px;
+    font-family: 'SanFransisco';
+}
+
+.job-title {
+    font-size: 1.25rem;
+    color: #CCD6F6; /* Adjust as needed */
+    font-family: 'SanFransisco';
+    position: relative;
+}
+
+
+.positions {
+    font-size: 1rem;
+    color: #8892B0; /* Adjust as needed */
+    margin-top: 2px;
+    font-family: 'SanFransisco';
+}
+.job-description {
+    color: #7582a3; /* Adjust as needed */
+    margin-top: 6px;
+    font-family: 'SanFransisco';
+    letter-spacing: 0.05em;
+    width: 90%;
+}
+
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    gap: 10px; /* Space between tags */
+    font-family:'SFMono';
+}
+
+.tags span {
+    background-color: #183149; /* Example background color */
+    color: #55D8BD;; /* Text color */
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-top: 10px; /* Space above the tags */
+}
+
+
+
+
+
 
 
 
@@ -346,7 +478,7 @@ body {
 
 
 
-/*#main-content, #intro, #about-me, #skills, #image-container, #profile-image, #second-image {
+/*#main-content, #intro, #about-me, #skills, #image-container, #profile-image, #second-image, #work-experience {
     border: 2px solid red;
 }
 
