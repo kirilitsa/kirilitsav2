@@ -15,8 +15,13 @@ body {
     color: white;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
+@font-face {
+    font-family: 'SanFransiscoLight';
+    src: url(fonts/SF-Pro-Text-Light.otf);
+    font-weight: normal;
+    font-style: normal;
+  }
 @font-face {
     font-family: 'SanFransiscoHEAVY';
     src: url(fonts/SF-Pro-Display-Heavy.otf);
@@ -133,15 +138,15 @@ body {
     font-family:'SFMono';
     font-size: 14px;
     border-radius: 5px; /* Rounded corners for the button */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-    transition: transform 0.3s ease, box-shadow 0.3s ease
+    transition: background-color 0.2s, color 0.2s; /* Smooth transition for hover effects */
+    transition: transform 0.2s ease, box-shadow 0.2s ease
 }
 
 .cta-button:hover {
     background: transparent; /* Background color on hover - choose a subtle color or keep it transparent */
     color: #55D8BD; /* Text color on hover - choose a color that contrasts the hover background */
     border-color: #55D8BD; /* Border color on hover - optional if you want to change the border color on hover */
-    transform: scale(1.02) translate(0, -5px);
+    transform: scale(1.02) translate(0, -2px);
     box-shadow: 10px 10px 0px 0px #55D8BD;
 }
 #about-me {
@@ -208,7 +213,7 @@ body {
     bottom: 0;
     left: 0;
     background-color: #55D8BD; /* Color of the underline */
-    transition: width 0.3s ease-in-out; /* Smooth transition for the underline effect */
+    transition: width 0.15s ease-in-out; /* Smooth transition for the underline effect */
     transform: translateY(-6px); /* Position the underline below the text */
 }
 
@@ -280,7 +285,7 @@ body {
 .skill-logo {
     width: 100%;
     height: auto;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
 .logo-description {
@@ -293,7 +298,7 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     background-color: linear-gradient(90deg, rgb(14, 16, 44) 23%, rgba(12,18,32,1) 54%, rgba(15,23,42,1) 100%);
     color: white;
     font-size: 16px;
@@ -340,6 +345,17 @@ body {
 .experience-entry:hover .job-title {
     color: #55D8BD; /* Change color on hover */
 }
+.experience-entry .experience-link {
+    display: flex;
+    align-items: flex-start;
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.experience-entry:hover .experience-link {
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
 .arrow {
     display: inline-block; /* Allows for transformation */
     transition: transform 0.2s ease; /* Smooth animation for the arrow */
@@ -350,8 +366,8 @@ body {
     transform: translateY(-5px) translateX(5px); /* Arrow animation on hover */
 }
 .date {
-    flex-basis: 100%; /* Adjust the width of the date column for closer proximity */
-    text-align: right; /* Align the text to the right */
+    width: 40%; /* Adjust the width of the date column for closer proximity */
+    text-align: left; /* Align the text to the right */
     margin-right: 2px; /* Reduced for closer spacing */
     font-family: 'SanFransisco';
     color: #7582a3;
@@ -360,8 +376,8 @@ body {
 }
 
 .job-details {
-    flex-grow: 1; /* Allow job details to take up remaining space */
-    padding-left: 20px; /* Reduced padding for closer alignment */
+    width: 100%; /* Allow job details to take up remaining space */
+    padding-left: 5px; /* Reduced padding for closer alignment */
     color: #7582a3;
     margin-top: 0px;
     font-family: 'SanFransisco';
@@ -370,8 +386,8 @@ body {
 .job-title {
     font-size: 1.25rem;
     color: #CCD6F6; /* Adjust as needed */
-    font-family: 'SanFransisco';
-    position: relative;
+    font-family: 'SanFransiscoLight';
+    position: relatssive;
 }
 
 
